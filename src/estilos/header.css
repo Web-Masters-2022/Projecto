@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.header-max-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3C4048;
+    color: white;
+    background-image: url("/public/headfoot.jpg");
+    background-size:cover;
+}
+
+.header-left-container {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    padding: 10px;
+}
+
+#name-header {
+    margin-right: 10px;
+}
+
+#logo {
+    width: 80px;
+}
+
+.navbar-container {
+    display: flex;
+    margin-right: 10px;
+}
+
+.navbar {
+    color: white;
+    margin-right: 10px;
+    text-decoration: none;
+}
