@@ -1,8 +1,12 @@
-let productos = require('./productos.json');
+// let productos = require('./productos.json');
+let productos = require('../ApiAdminProductos/productos.json')
 let request = require("axios");
+const { response } = require("express");
+
 
 const productosGet = () => {
     return productos;
+    
 }
 
 const productoIdGet = (id) => {
@@ -36,7 +40,27 @@ const productosComprados = (listaProductosComprados) => {
     return productos;
 }
 
+// Sincronizar los json
+
+const actualizarStock = (productoParaActualizar) => {
+    for(let i = 0; i < productos.length; i++) {
+        if (productoParaActualizar.id === productos[i].id) {
+            productos[i] = productoParaActualizar;
+            return productos;
+        }
+    }
+
+    productos.push(productoParaActualizar);
+    return productos;
+
+
+}
+
+
+
+
 module.exports.productosGetExports = productosGet;
 module.exports.productoIdGetExports = productoIdGet;
 module.exports.añadirACarritoExports = añadirACarrito;
 module.exports.productosCompradosExports = productosComprados;
+module.exports.actualizarStockExports = actualizarStock;

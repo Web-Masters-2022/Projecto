@@ -23,9 +23,10 @@ const confirmarCompra = async () => {
 
     const ventaConfirmada = request.post("http://localhost:8082/ventas", productosCarrito);
     const stockActualizado = request.patch("http://localhost:8080/comprar", productosCarrito);
-    const carritoElominado = request.delete("http://localhost:8081/carrito")
+    const stockActualizadoEnBodega = request.patch("http://localhost:8084/productos", productosCarrito);
+    const carritoEliminado = request.delete("http://localhost:8081/carrito")
 
-    await request.all([ventaConfirmada, stockActualizado, carritoElominado])
+    await request.all([ventaConfirmada, stockActualizado, carritoEliminado, stockActualizadoEnBodega])
     .then(
         (res)=>{
             console.log(res);

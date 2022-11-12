@@ -18,8 +18,7 @@ app.use(body_parse.json());
 // Crud
 
 app.get("/comprar", (request, response) => {
-  console.log(request);
-  response.send(productosService.productosGetExports());  
+  response.send(productosService.productosGetExports())
 })
 
 app.get("/comprar/id", (request, response) => {
@@ -35,6 +34,12 @@ app.post("/comprar", (request, response) => {
 app.patch("/comprar", (request, response) => {
   response.send(productosService.productosCompradosExports(request.body));
 })
+
+app.put("/comprar", (request, response) => {
+  response.send(productosService.actualizarStockExports(request.body))
+})
+
+
 
 
 app.listen(port, () => {
