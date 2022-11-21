@@ -18,16 +18,17 @@ const port = 8085;
 app.use(cors());
 app.use(body_parse.json());
 
-app.get("/modificar", (request, response) => {
-    response.send((modificarService.getProductosExports()));
+app.get("/modificar", async (request, response) => {
+    response.send(( await modificarService.getProductosExports()));
+   
 })
 
-app.post("/modificar", (request, reponse) => {
-    reponse.send(modificarService.agregandoProductoExports(request.body));
+app.post("/modificar", async (request, reponse) => {
+    reponse.send(await modificarService.agregandoProductoExports(request.body));
 })
 
-app.put("/modificar", (request, response) => {
-    response.send(modificarService.enviarModificacionExports(request.body));
+app.put("/modificar", async (request, response) => {
+    response.send(await modificarService.enviarModificacionExports(request.body));
 })
 
 app.listen(port, () => {

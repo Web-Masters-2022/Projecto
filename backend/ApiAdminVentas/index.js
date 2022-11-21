@@ -17,12 +17,12 @@ app.use(body_parse.json());
 
 // Crud
 
-app.get("/ventas", (request, response) => {
-    response.send(ventasService.ventasGetExports());
+app.get("/ventas", async (request, response) => {
+    response.send(await ventasService.ventasGetExports());
 })
 
-app.post("/ventas", (request, response) => {
-    response.send(ventasService.ventasSetExports(request.body));
+app.post("/ventas", async (request, response) => {
+    response.send(await ventasService.ventasSetExports(request.body));
 })
 
 
