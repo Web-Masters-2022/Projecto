@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import datosProductos from "../data/productStock";
-import datosCarrito from "../data/productsCarrito";
+//import datosProductos from "../data/productStock";
+//import datosCarrito from "../data/productsCarrito";
 import "../estilos/cards.css";
 
 
@@ -11,16 +11,29 @@ import "../estilos/cards.css";
 
 function BasicExample({product}) {
 
-  const datosCarritoJSON = JSON.parse(localStorage.getItem("carrito"))
-  const [datosCarrito, setDatosCarrito] = useState(datosCarritoJSON)
+  
 
   function add() {
     
-    datosCarrito.push(product);
-    localStorage.setItem("carrito", JSON.stringify(datosCarrito));
+    let productoParaEnviar = {
+      "imagen": product.imagen,
+      "nombreProducto": product.nombreProducto,
+      "precio": product.precio,
+      "cantidad": product.cantidad
+    }
+
+    fetch("http://localhost:8080/comprar",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(productoParaEnviar)
+      }
+    )
     alert(`Se añadió al carrito un ${product.nombreProducto}`);
 
-    window.location.reload();
+   //window.location.reload();
    
     
   }

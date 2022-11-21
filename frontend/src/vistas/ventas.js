@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/header";
 import ResponsiveTable from "../components/responsiveTable";
 import data from "../data/productsSold";
@@ -6,9 +6,25 @@ import "../estilos/tables.css"
 
 
 function Ventas() {
-    const datosProductsSoldJSON = JSON.parse(localStorage.getItem("ventas"))
-    const [datosVentas, setDatosVentas] = useState(datosProductsSoldJSON);
 
+    const [datosVentas, setDatosVentas] = useState([{}]);
+
+    useEffect(
+        () => {
+        fetch("http://localhost:8082/ventas")
+        .then(
+            (response) => (response.json())
+        )
+        .then(
+            (response) => {
+                setDatosVentas(response)
+            }
+            
+        )
+    }, []
+    )
+
+    console.log(datosVentas)
     return (
         <>
              

@@ -1,13 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/header";
 import StockProductos from "../components/productCard";
-import products from "../data/productStock";
+//import products from "../data/productStock";
 import "../estilos/header.css";
 import "../estilos/cards.css";
 
 
 function Productos() {
+
+    const [products, setProducts] = useState([{}])
     
+    useEffect(
+        () => {
+        fetch("http://localhost:8084/productos")
+        .then(
+            (response) => (response.json())
+        )
+        .then(
+            (response) => {
+                setProducts(response)
+            }
+            
+        )
+    }, []
+    )
 
     return (
         <>

@@ -5,6 +5,8 @@ import { Table } from "react-bootstrap";
 /* Crea las filas de la tabla */
 
 function ProductRow({product}) {
+
+  
     return (
       <tr>
         <td className={"column"}>{product.nombreProducto}</td>
@@ -24,7 +26,7 @@ function ProductTable({products}) {
   
     products.forEach((product) => {
       rows.push(
-        <ProductRow product = {product} key = {product.idVenta}/>
+        <ProductRow product = {product}/>
       )
       sumTotal += Number(product.valor);
     }

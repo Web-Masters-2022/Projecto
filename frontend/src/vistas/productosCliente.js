@@ -1,14 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import UserHeader from "../components/userHeader";
 import StockProductos from "../components/productCardCliente";
-import products from "../data/productStock";
+//import products from "../data/productStock";
 import "../estilos/header.css";
 import "../estilos/cards.css";
 
 
 function ListaProductos() {
 
-    const [datosProductos, setDatosProductos] = useState(products);
+    const [datosProductos, setDatosProductos] = useState([{}])
+    
+    useEffect(
+        () => {
+        fetch("http://localhost:8080/comprar")
+        .then(
+            (response) => (response.json())
+        )
+        .then(
+            (response) => {
+                setDatosProductos(response)
+            }
+            
+        )
+    }, []
+    )
     
     return (
         <>

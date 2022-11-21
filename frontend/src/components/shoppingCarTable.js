@@ -10,10 +10,9 @@ function ProductRow({product}) {
     return (
       <tr>
         <td className={"column"}><img src={product.imagen}></img></td>
-        <td className={"column"}>{1}</td>
         <td className={"column"}>{product.nombreProducto}</td>
         <td className={"column"}>{product.precio}</td>
-        <td className={"column"}>{product.precio}</td>
+        
       </tr>
     );
 }
@@ -36,7 +35,7 @@ function ProductTable({products}) {
     )
   
     rows.push(
-      <ProductRow className="lastColumn" product = {{"imagen": " ", "cantidad": 1 , "nombreProducto": "Total:", "precio": sumTotal, "total": sumTotal}}/>
+      <ProductRow className="lastColumn" product = {{"imagen": " ", "nombreProducto": "Total:", "precio": sumTotal, "total": sumTotal}}/>
     )
     
     return (
@@ -44,10 +43,9 @@ function ProductTable({products}) {
         <thead>
           <tr>
             <th >Producto</th>
-            <th >Cantidad</th>
             <th >Nombre</th>
-            <th >Valor</th>
             <th >Total</th>
+          
           </tr>
         </thead>
   

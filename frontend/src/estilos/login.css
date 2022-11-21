@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+}
+
+.body {
+    width: 100vh;
+    height: 100vh;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("/public/Ny7W.gif");
+    background-size:auto;
+    height: 100vh;
+
+}
+
+.caja-container {
+    display: flex;
+    height: 350px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color:black;
+    
+}
+
+.encabezados {
+    text-align: center;
+}
+
+.inputfield {
+    color: black;
+}
+
+#mybtn {
+    background-color: blue;
+}

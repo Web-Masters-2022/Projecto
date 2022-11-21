@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import UserHeader from "../components/userHeader";
 import ResponsiveTable from "../components/shoppingCarTable";
 import data from "../data/productsCarrito";
@@ -7,26 +7,54 @@ import { Button } from "react-bootstrap";
 
 function Carrito() {
     
-    
-    
-    const datosCarritoJSON = JSON.parse(localStorage.getItem("carrito"))
-    const [datosCarrito, setDatosCarrito] = useState(datosCarritoJSON);
+    const [datosCarrito, setDatosCarrito] = useState([{}]);
+
+    useEffect(
+        () => {
+        fetch("http://localhost:8081/carrito")
+        .then(
+            (response) => (response.json())
+        )
+        .then(
+            (response) => {
+                setDatosCarrito(response)
+            }
+            
+        )
+    }, []
+    )
+
+   
 
     const datosProductsSoldJSON = JSON.parse(localStorage.getItem("ventas"))
     const [datosVentas, setDatosVentas] = useState(datosProductsSoldJSON);
 
     function cancelar() {
-        window.localStorage.removeItem('carrito');
+        
+        fetch("http://localhost:8081/carrito",
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    )
         alert("Carrito cancelado...")
         window.location.reload();
     }
 
     function comprar() {
-        const ventasFinales = [...datosVentas, ...datosCarrito]
-        localStorage.setItem("ventas", JSON.stringify(ventasFinales));
-        window.localStorage.removeItem("carrito");
+       fetch("http://localhost:8081/carrito",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(datosCarrito)
+      }
+    )
         alert("Gracias por su compra!")
-        window.location.reload();
+        
     }
 
     
