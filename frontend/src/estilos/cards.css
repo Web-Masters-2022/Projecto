@@ -1,0 +1,15 @@
+.product-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 50px 0 50px 0;
+    height: calc(100vh - 180px); ;
+    max-height: calc(100vh - 180px);
+    width: 100%;
+    background-image: url("/public/9lZ7.gif");
+}
+
+.icon {
+    text-align: center;
+    padding-top: 10px;
+}
